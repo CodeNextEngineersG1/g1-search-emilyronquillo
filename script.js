@@ -2,33 +2,38 @@
 let database = [{
 name: "Waitress",
 mainCharacter: "Jenna Hunterson",
-mainCharacter actor: "Jessie Mueller",
+mainCharacterActor: "Jessie Mueller",
 openingNight: "April 24, 2016",
-playwright: "Jessie Nelson"
+playwright: "Jessie Nelson",
+picture:"img/Jenna_Hunterson.jpg"
 },{
 name: "Heathers",
 mainCharacter: "Veronica Sawyet",
-mainCharacter actor: "Barrett Wilbert Weed",
+mainCharacterActor: "Barrett Wilbert Weed",
 openingNight: "April 17, 2014",
-playwright: "Kevin Murphy + Laurence O'Keefe"
+playwright: "Kevin Murphy + Laurence O'Keefe",
+picture:"img/Barrett_Wilbert_Weed.jpg"
 },{
 name: "Natasha, Pierre and the Great Comet of 1812",
 mainCharacter: "Natasha Rostova",
-mainCharacter actor: "Phillipa Soo",
+mainCharacterActor: "Phillipa Soo",
 openingNight: "September 27, 2013",
-playwright: "Dave Malloy"
+playwright: "Dave Malloy",
+picture:"img/Phillipa_Soo.jpg"
 },{
 name: "Mean Girls",
 mainCharacter: "Cady Heron",
-mainCharacter actor: "Erika Henningson",
+mainCharacteractor: "Erika Henningson",
 openingNight: "April 8, 2018",
-playwright: "Tina Fey"
+playwright: "Tina Fey",
+picture:"img/Erika_Henningson.jpg"
 },{
 name: "Dear Evan Hansen",
 mainCharacter: "Evan Hansen",
-mainCharacter actor: "Ben Platt",
+mainCharacteractor: "Ben Platt",
 openingNight: "December 4, 2016",
-playwright: "Steven Levenson"
+playwright: "Steven Levenson",
+picture:"img/Ben_Platt.jpg"
 }];
 
 let searchBar = document.getElementById("search-bar");
@@ -48,7 +53,18 @@ function checkKey(e) {
 }
 
 function processInput() {
-let cleanedRecordName = searchBar.value.toLowerCase().trim();
+  let cleanedRecordName = searchBar.value.toLowerCase().trim();
+  autoSuggestions.innerHTML + '';
+  autoSuggestions.style.display = 'none';
+  autoSuggestions.innerHTML = '';
+  let databaseRecord = getRecord(cleanedInput);
+
+  if(databaseRecord != null) {
+    displayRecord(databaseRecord);
+  } else {
+    alert('No results');
+  }
+
 }
 
 funciton getRecord(cleanedInput) {
